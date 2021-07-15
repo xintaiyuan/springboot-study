@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.mapper.UserMapper">
+    <select id="findUserByUsername" resultType="com.example.springboot.pojo.User" parameterType="string">
+        select * from user where username=#{username}
+    </select>
+
+    <delete id="deleteById" >
+        delete from user where id=#{id}
+    </delete>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into user(username,age,address) values (#{username},#{age},#{address})
+    </insert>
+
+    <update id="update" useGeneratedKeys="true" keyProperty="id">
+        update user set username = #{username} where id = #{id}
+    </update>
+</mapper>
